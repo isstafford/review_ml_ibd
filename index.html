@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+
+</head>
+<body>
+
+<h2>Instructions</h2>
+<p>Clicking on the tabs below open graphical representations of the review articles. Articles are arranged by the machine-learning methodology (Method), the
+goal of the analysis (Task) and the type of data used for the analyses (Data-Type). Different tabs have different orderings for each of the three catagories.
+Graph wedges can be expanded or collapsed by clicking on them. Completely expanding a wedge will display the individual articles with links to the article
+website. <i>Note: Since some articles use multiple approaches, it may appear more than once.</i></p>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'MTD')" id="defaultOpen">Method->Task->Data-Type</button>
+  <button class="tablinks" onclick="openCity(event, 'MDT')">Method->Data-Type->Task</button>
+  <button class="tablinks" onclick="openCity(event, 'TMD')">Task->Method->Data-Type</button>
+  <button class="tablinks" onclick="openCity(event, 'TDM')">Task->Data-Type->Method</button>
+  <button class="tablinks" onclick="openCity(event, 'DMT')">Data-Type->Method->Task</button>
+  <button class="tablinks" onclick="openCity(event, 'DTM')">Data-Type->Task->Method</button>
+</div>
+
+<div id="MTD" class="tabcontent">
+  <embed type="text/html" src="MTD.html" width="100%" height="750">
+</div>
+
+<div id="MDT" class="tabcontent">
+  <embed type="text/html" src="MDT.html" width="100%" height="750">
+</div>
+
+<div id="TMD" class="tabcontent">
+  <embed type="text/html" src="TMD.html" width="100%" height="750">
+</div>
+
+<div id="TDM" class="tabcontent">
+  <embed type="text/html" src="TDM.html" width="100%" height="750">
+</div>
+
+<div id="DMT" class="tabcontent">
+  <embed type="text/html" src="DMT.html" width="100%" height="750">
+</div>
+
+<div id="DTM" class="tabcontent">
+  <embed type="text/html" src="DTM.html" width="100%" height="750">
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+<script>
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+   
+</body>
+</html> 

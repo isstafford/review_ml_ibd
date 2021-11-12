@@ -6,6 +6,7 @@
 # Function: 
 #######################################################
 
+# Modify the path for your environment
 setwd("~/Projects/review_ml_ibd")
 
 library(data.table)
@@ -15,11 +16,7 @@ library(stringi)
 library(htmlwidgets)
 
 # Load the appropriate excel file ####
-#phvig_data <- as.data.table(read.xlsx("20210525_systematicreview_table_nonotes.xlsx", check.names = TRUE))
-#phvig_data <- as.data.table(read.xlsx("20210614_systematicreview_table_nonotes.xlsx", check.names = TRUE))
-#phvig_data <- as.data.table(read.xlsx("20210715_systematicreview_table_nonotes.xlsx", check.names = TRUE))
 phvig_data <- as.data.table(read.xlsx("20210817_systematicreview_table_nonotes.xlsx", check.names = TRUE))
-
 
 # Change the column names to something short ####
 setnames(phvig_data, "ML.Method.s.", "Method")
@@ -53,7 +50,7 @@ phvig_data <- phvig_data[KEEP==TRUE]
 phvig_data$Method <- trimws(phvig_data$Method, which = c("both"))
 # Roll-up the different ML methods into a common term ####
 #   First let's handle a few specific cases which might otherwise be mis-classified
-phvig_data[grepl("CatBoost (tree based)", Method, ignore.case = TRUE), Method:= "Boosting"]
+phvig_data[grepl("CatBoost \\(tree based\\)", Method, ignore.case = TRUE), Method:= "Boosting"]
 phvig_data[grepl("Gradient boosted trees", Method, ignore.case = TRUE), Method:= "Boosting"]
 phvig_data[grepl("Guassian Mixture Model", Method, ignore.case = TRUE), Method:= "Clustering"]
 phvig_data[grepl("Nearest Shrunken Centroids", Method, ignore.case = TRUE), Method:= "Clustering"]
